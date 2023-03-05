@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Flow Lab</h1>
+    <h3 class="text-3xl font-bold">Dashboard</h3>
   </div>
 </template>
 
