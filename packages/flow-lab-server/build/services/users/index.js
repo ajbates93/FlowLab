@@ -15,13 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const db_1 = __importDefault(require("../db"));
 const getUsers = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        console.log('made it');
         const { data, error } = yield db_1.default
             .from('user')
-            .select('*');
+            .select();
         if (error)
             throw Error(error.message);
-        console.log(`users: ${data}`);
         return data;
     }
     catch (err) {

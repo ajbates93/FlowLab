@@ -4,7 +4,7 @@ const getUsers = async () => {
   try {
     const { data, error } = await db
       .from('user')
-      .select('first_name')
+      .select()
   
     if (error)
       throw Error(error.message)

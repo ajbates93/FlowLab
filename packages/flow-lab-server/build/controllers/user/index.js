@@ -16,7 +16,6 @@ const users_1 = __importDefault(require("../../services/users"));
 const get = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const users = yield users_1.default.getUsers();
-        console.log(`from controller: ${users}`);
         res.json(users);
     }
     catch (err) {
