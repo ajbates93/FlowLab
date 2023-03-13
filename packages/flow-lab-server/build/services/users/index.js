@@ -12,16 +12,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const users_1 = __importDefault(require("../../services/users"));
-const get = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const db_1 = __importDefault(require("../db"));
+const getUsers = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const users = yield users_1.default.getUsers();
-        console.log(`from controller: ${users}`);
-        res.json(users);
+        console.log('made it');
+        const { data, error } = yield db_1.default
+            .from('user')
+            .select('*');
+        if (error)
+            throw Error(error.message);
+        console.log(`users: ${data}`);
+        return data;
     }
     catch (err) {
         console.error(err);
-        next(err);
     }
 });
-exports.default = { get };
+exports.default = { getUsers };

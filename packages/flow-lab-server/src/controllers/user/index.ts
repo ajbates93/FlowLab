@@ -1,8 +1,10 @@
 import { Request, Response, NextFunction } from 'express'
+import dbUsers from '../../services/users'
 
 const get = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    res.send('Made it to the user controller!')
+    const users = await dbUsers.getUsers()
+    res.json(users) 
   } catch (err: any) {
     console.error(err)
     next(err)
