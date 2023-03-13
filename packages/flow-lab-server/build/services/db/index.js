@@ -1,7 +1,8 @@
 "use strict";
+var _a, _b;
 Object.defineProperty(exports, "__esModule", { value: true });
 const supabase_js_1 = require("@supabase/supabase-js");
-const supabaseURL = "https://jkrcwjkooaljroaallxi.supabase.co";
-const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImprcmN3amtvb2FsanJvYWFsbHhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzg3NDQ5MzcsImV4cCI6MTk5NDMyMDkzN30.zDqexX0c1ZQT0kEVCV-WeMEmy9zZaTXr00IPgOYcP38";
+const supabaseURL = (_a = process.env.SUPABASE_URL) !== null && _a !== void 0 ? _a : '';
+const supabaseAnonKey = (_b = process.env.SUPABASE_ANON_KEY) !== null && _b !== void 0 ? _b : '';
 const supabase = (0, supabase_js_1.createClient)(supabaseURL, supabaseAnonKey);
 exports.default = supabase;
