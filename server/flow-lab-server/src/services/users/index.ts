@@ -1,8 +1,8 @@
-import db from '../db'
+import { supabase } from '../db'
 
 const getUsers = async () => {
   try {
-    const { data, error } = await db
+    const { data, error } = await supabase
       .from('user')
       .select()
   

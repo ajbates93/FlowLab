@@ -10,17 +10,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const db_1 = require("../db");
-const getUsers = () => __awaiter(void 0, void 0, void 0, function* () {
+const getModels = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { data, error } = yield db_1.supabase
-            .from('user')
-            .select();
-        if (error)
+        const { data, error } = yield db_1.tables
+            .from('tables')
+            .select()
+            .eq('table_schema', 'public')
+            .like('table_name', 'content_%');
+        if (error) {
             throw Error(error.message);
+        }
         return data;
     }
-    catch (err) {
-        console.error(err);
+    catch (ex) {
+        console.error(ex);
     }
 });
-exports.default = { getUsers };
+exports.default = { getModels };
