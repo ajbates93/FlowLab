@@ -12,11 +12,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const db_1 = require("../db");
 const getModels = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { data, error } = yield db_1.tables
-            .from('tables')
-            .select()
-            .eq('table_schema', 'public')
-            .like('table_name', 'content_%');
+        const { data, error } = yield db_1.supabase
+            .rpc('list_public_tables')
+            .select('table_name');
         if (error) {
             throw Error(error.message);
         }
